@@ -1,0 +1,37 @@
+1、一行文字：商品信息列表：
+说明：一个table显示所有的商品信息
+public class Product {
+    // 名称，数量单位，单价，类别和条形码（伪）
+    private String barcode;
+    private String name;
+    private String unit;
+    private String category;
+    private String subCategory;
+    private Double price;
+}
+输入到jsp的是：productList
+<c:forEach items="$productList" var="product">
+2、一行文字：修改商品信息
+一个多行输入：每行是上面product的字符串数组。
+商品信息修改的三个功能：add、delete、update
+不需要跳转，需要三个表单还是怎么处理？不太清楚。
+3、一行文字：打折商品：
+一个多行输入：用逗号分隔的商品条形码列表。
+两个按钮：add，delete.
+4.一行文字：购买商品价格清单 输入是：String 
+一个多行输出框.
+
+<table>
+		<c:forEach items="$productList" var="product">
+			<tr>
+			<td><c:out value="${product.barcode}" /></td>
+			<td><c:out value="${product.name}" /></td>
+			<td><c:out value="${product.unit}" /></td>
+			<td><c:out value="${product.category}" /></td>
+			<td><c:out value="${product.subCategory}" /></td>
+			<td><c:out value="${product.price}" /></td>
+			</tr>
+		</c:forEach>
+      </table>
+
+
