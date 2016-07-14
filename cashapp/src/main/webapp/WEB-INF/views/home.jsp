@@ -9,9 +9,10 @@
 <title>Blog for people who follows your heart</title>
 </head>
 <body>
-	<h1>Welcome to cashapp</h1>
-	
+	<h1 align="center">Welcome to cashapp</h1>
+	<div>
 	<a href="<c:url value="/user/login" />">Login</a>
 	<a href="<c:url value="/user/register" />">Register</a>
+	</div>
 </body>
 </html>

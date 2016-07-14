@@ -9,12 +9,14 @@
 <title>cashapp</title>
 </head>
 <body>
-	<h1>Login</h1>
+	<h1 align="center">Login</h1>
+	<div align="center">
 	<form method="post">   
 	<!-- default :action="/cashapp/user/login" -->
 		UserName: <input type="text" name="name" /> <br/>
 		PassWord: <input type="password" name="password" /> <br/>
 		<input type="submit" value="Register">
 	</form>
+	</div>
 </body>
 </html>

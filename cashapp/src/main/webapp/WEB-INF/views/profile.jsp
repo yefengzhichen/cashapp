@@ -10,9 +10,9 @@
 </head>
 <body>
 	<h4 align="center">Welcome to cashapp</h4>
-	<p>
+	<div align="center">
 	Your name: <c:out value="${user.name}"></c:out> <br>
 	Your description: <c:out value="${user.description}"></c:out>
-	</p>
+	</div>
 </body>
 </html>

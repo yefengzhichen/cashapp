@@ -9,7 +9,8 @@
 <title>cashapp</title>
 </head>
 <body>
-	<h1>Register</h1>
+	<h1 align="center">Register</h1>
+	<div align="center">
 	<form action="/cashapp/user/register" method="post">   
 	<!-- real :action="/cashapp/user/register" -->
 		UserName: <input type="text" name="name" /> <br/>
@@ -17,5 +18,6 @@
 		Description: <input type="text" name="description" /> <br/>
 		<input type="submit" value="Register">
 	</form>
+	</div>>
 </body>
 </html>
