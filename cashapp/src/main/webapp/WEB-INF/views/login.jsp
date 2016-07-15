@@ -12,6 +12,7 @@
 	<h1 align="center">Login</h1>
 	<div align="center">
 	<form method="post">   
+		Example:jack/1221 <br/>
 	<!-- default :action="/cashapp/user/login" -->
 		UserName: <input type="text" name="name" /> <br/>
 		PassWord: <input type="password" name="password" /> <br/>

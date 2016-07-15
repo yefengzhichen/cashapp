@@ -10,9 +10,9 @@
 </head>
 <body>
 	<h1 align="center">Welcome to cashapp</h1>
-	<div>
-	<a href="<c:url value="/user/login" />">Login</a>
-	<a href="<c:url value="/user/register" />">Register</a>
+	<div align="center">
+	<a style="font-size:16px;" href="<c:url value="/user/login" />">Login</a>  
+	<a style="font-size:16px;" href="<c:url value="/user/register" />">Register</a>
 	</div>
 </body>
 </html>

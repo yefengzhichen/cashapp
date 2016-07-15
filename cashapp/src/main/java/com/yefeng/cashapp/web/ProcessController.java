@@ -26,67 +26,75 @@ public class ProcessController {
 	private ProductDao productDao;
 	@Autowired
 	private ProcessService processService;
-	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String shopApp(Model model) {
-		List<Product> productList = productDao.getAll();
-		model.addAttribute("productList",productList);
-		String discountList = "";
-		for (int i = 0; i < productList.size(); ++i) {
-			Product product = productList.get(i);
-			if (product.isDiscount()) {
-				discountList += product.getBarcode();
-				if (i != productList.size()) {
-					discountList += ", ";
-				}
-			}
-		}
+		addModelAttribute(model);
 		String detail = "The input product barcode is null";
-		model.addAttribute("discountList",discountList);
-		model.addAttribute("detail",detail);	
+		model.addAttribute("detail", detail);
 		return "start";
 	}
 
-	@RequestMapping(value = "/addprodcut", method = RequestMethod.GET)
-	public String addProduct(Product Product, Model model) {
-		productDao.save(Product);
-		List<Product> productList = productDao.getAll();
-		model.addAttribute("productList", productList);
+	// Item0010,apple,kg,fruit,fresh fruit,13.00
+	@RequestMapping(value = "/inputProduct", method = RequestMethod.POST)
+	public String addProduct(String inputProduct, Model model) {
+		String[] proStr = inputProduct.split(";");
+		for (String pro : proStr) {
+			String[] list = pro.split(",");
+			String barcode = list[0];
+			String name = list[1];
+			String unit = list[2];
+			String category = list[3];
+			String subCategory = list[4];
+			Double price = Double.parseDouble(list[5]);
+			Product product = new Product(barcode, name, unit, category, subCategory, price);
+			productDao.save(product);
+		}
+		addModelAttribute(model);
 		return "start";
 	}
 
-	@RequestMapping(value = "/addDiscount", method = RequestMethod.GET)
-	public String addDiscount(String string, Model model) {
-		String[] barcodes = string.split(",");
+	@RequestMapping(value = "/inputDiscount", method = RequestMethod.POST)
+	public String addDiscount(String inputDiscount, Model model) {
+		String[] barcodes = inputDiscount.split(",");
 		for (String barcode : barcodes) {
 			productDao.setDiscount(barcode);
 		}
+		addModelAttribute(model);
+		return "start";
+	}
+
+	@RequestMapping(value = "/inputBarcode", method = RequestMethod.POST)
+	public String inputItem(String inputBarcode, Model model) {
+		String detail = processService.calculateAll(inputBarcode);
+		model.addAttribute("datail", detail);
+		addModelAttribute(model);
+		return "start";
+	}
+
+	// @RequestMapping(value = "/inputbarcode", method = RequestMethod.POST)
+	// public String inputBarcode(String string, Model model) {
+	// String detail = processService.calculateAll(string);
+	// model.addAttribute("datail", detail);
+	// addModelAttribute(model);
+	// return "start";
+	// }
+
+	public void addModelAttribute(Model model) {
 		List<Product> productList = productDao.getAll();
 		model.addAttribute("productList", productList);
 		String discountList = "";
 		for (int i = 0; i < productList.size(); ++i) {
 			Product product = productList.get(i);
 			if (product.isDiscount()) {
-				if (i != productList.size()) {
-					discountList += ", ";
+				if (discountList.length() == 0) {
+					discountList += product.getBarcode();
+				} else {
+					discountList += (", " + product.getBarcode());
 				}
 			}
 		}
-		model.addAttribute("discountList", discountList);	
-		return "start";
+		model.addAttribute("discountList", discountList);
 	}
 
-	@RequestMapping(value = "/inputItem", method = RequestMethod.GET)
-	public String inputItem(String string, Model model) {
-		String detail = processService.calculateAll(string);
-		model.addAttribute("datail", detail);	
-		return "start";
-	}
-	@RequestMapping(value = "/inputbarcode", method = RequestMethod.GET)
-	public String inputBarcode(String string, Model model) {
-		String detail = processService.calculateAll(string);
-		model.addAttribute("datail", detail);	
-		return "start";
-	}
 }

@@ -84,11 +84,11 @@ public class ProcessServiceImpl implements ProcessService {
 				detailPrice.append(",小计：" + df.format(subTotal) + "(元) ");
 			}
 		}
-		tatalPrice.append("总计：" + df.format(totalSum) + "(元)");
+		tatalPrice.append("总计：" + df.format(totalSum - discountSum) + "(元)");
 		if (discountPrice.length() > 1) {
 			tatalPrice.append(" 节省：" + df.format(discountSum) + "(元)");
 		}
-		result = detailPrice.toString() + "\n\n" + discountPrice.toString() + "\n\n" + tatalPrice.toString();
+		result = detailPrice.toString() + "\n" + discountPrice.toString() + "\n" + tatalPrice.toString();
 		return result;
 	}
 
