@@ -4,10 +4,6 @@ package com.yefeng.cashapp.model;
  * @author yefengzhichen
  * 2016年7月10日
  */
-/**
- * @author yefengzhichen
- * 2016年7月12日
- */
 public class Product {
     // 名称，数量单位，单价，类别和条形码（伪）
     private String barcode;

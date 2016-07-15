@@ -14,6 +14,10 @@ import com.yefeng.cashapp.dao.UserDao;
 import com.yefeng.cashapp.model.Product;
 import com.yefeng.cashapp.model.User;
 
+/**
+ * @author yefengzhichen
+ * 2016Äê7ÔÂ15ÈÕ
+ */
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {

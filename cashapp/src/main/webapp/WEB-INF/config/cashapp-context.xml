@@ -10,22 +10,17 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	
+	<!-- 静态资源路径配置，配置后，静态资源将不用分发器处理即可获得，此项目中未使用 -->
 	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />  
+	<!-- mvc配置注解驱动 -->
 	<mvc:annotation-driven/>
-	
+	<!-- 启动自动扫面组件 -->
 	<context:component-scan base-package="com.yefeng.cashapp.web"/>
-	
-	<!-- 视图处理器 -->
+	<!-- 视图处理器，自动添加前缀后缀 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 
-	<bean id="servletHandlerAdapter"
-		class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter" />
-	-->
 </beans>

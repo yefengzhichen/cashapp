@@ -38,7 +38,7 @@
 	</table>
 		<!-- 输入购买的商品条形码 -->
 	<div align="center">
-		<br> Input product barcode list(Example:Item0002,Item0010): <br>
+		<br> Input product barcode list(Example:Item0002,Item0010-10): <br>
 	<form action="/cashapp/start/inputBarcode" method="post" id="inputBarcode">		
 		<textarea name="inputBarcode" cols="100" rows="1"></textarea> <br>
 			<input type="submit" value="InputBarcode">

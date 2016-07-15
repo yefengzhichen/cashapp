@@ -2,17 +2,19 @@ package com.yefeng.cashapp.service;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yefeng.cashapp.dao.ProductDao;
 import com.yefeng.cashapp.model.Product;
 
+
+/**
+ * @author yefengzhichen
+ * 2016年7月15日
+ */
 @Repository(value = "processService")
 public class ProcessServiceImpl implements ProcessService {
 
@@ -23,7 +25,7 @@ public class ProcessServiceImpl implements ProcessService {
 		Map<String, Double> map = parseInput(inputString);
 		return calculatePrice(map);
 	}
-		
+	//解析条形码输入，输入中包含数量，进行分割	
 	public Map<String, Double> parseInput(String inputString) {
 		String[] input = inputString.split(",");
 		Map<String, Double> buy = new HashMap<>();
@@ -45,7 +47,7 @@ public class ProcessServiceImpl implements ProcessService {
 		}
 		return buy;
 	}
-
+	//计算总的价格、以及实现满100减10的优惠，最后返回一个小票的字符串
 	public String calculatePrice(Map<String, Double> buy) {
 		String result;
 		List<Product> productList = productDao.getAll();

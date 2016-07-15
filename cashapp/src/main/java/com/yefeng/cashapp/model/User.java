@@ -1,13 +1,5 @@
 package com.yefeng.cashapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-
 public class User {
 	private String name;
 	private String password;
@@ -15,7 +7,7 @@ public class User {
 	
 	public User() {
 		super();
-	}
+	}	
 	
 	public User(String name, String password, String description) {
 		super();

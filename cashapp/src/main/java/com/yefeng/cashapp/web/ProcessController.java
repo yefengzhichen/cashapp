@@ -1,9 +1,6 @@
 package com.yefeng.cashapp.web;
 
-import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.yefeng.cashapp.dao.ProductDao;
 import com.yefeng.cashapp.dao.UserDao;
 import com.yefeng.cashapp.model.Product;
-import com.yefeng.cashapp.model.User;
 import com.yefeng.cashapp.service.ProcessService;
 
+/**
+ * @author yefengzhichen
+ * 2016Äê7ÔÂ15ÈÕ
+ */
 @Controller
 @RequestMapping(value = "/start")
 public class ProcessController {
@@ -71,14 +71,6 @@ public class ProcessController {
 		addModelAttribute(model);
 		return "start";
 	}
-
-	// @RequestMapping(value = "/inputbarcode", method = RequestMethod.POST)
-	// public String inputBarcode(String string, Model model) {
-	// String detail = processService.calculateAll(string);
-	// model.addAttribute("datail", detail);
-	// addModelAttribute(model);
-	// return "start";
-	// }
 
 	public void addModelAttribute(Model model) {
 		List<Product> productList = productDao.getAll();
